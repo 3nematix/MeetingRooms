@@ -49,7 +49,7 @@ The default authentication mode for PostgreSQL is set to ident, so we are going 
 
 * I'm going to keep all my private settings & configs in .env file `sudo touch .env && sudo nano .env`. These are the settings which I used, make sure to follow this format! <br/> <img src="https://i.gyazo.com/3cd6bb55e107bb074faecf2d1e5156f8.png" alt="env_file"/>
 
-* Install virtualenv `sudo -H pip3 install -U pipenv`, then activate it `pipenv shell` to exit `exit`. Install from Pipfile, if there is one: `pipenv install`.
+* Install virtualenv `sudo -H pip3 install -U pipenv`, then activate it `pipenv shell` (to exit `exit`). Install from Pipfile, if there is one: `pipenv install`.
 
 <b>4. Launching The Project</b>
 
@@ -57,4 +57,45 @@ The default authentication mode for PostgreSQL is set to ident, so we are going 
 
 * To run the Django server locally - `sh run_server.sh`.
 
-# Documentation
+# Authentication & Logout
+
+* First of all create a superuser: `python manage.py createsuperuser`, you can edit all the models, create & edit employees by logging into admin panel - `localhost:8000/admin/`
+
+Note: Every request should have `Content-Type` set to `application/json` in request headers.
+
+* To register an employee we have a route - `/auth/register`, this requires a Json body with [`first_name`, `last_name`, `email_address`, `password`] variables. After an successfull registration you should receive this response:<br/><img src="https://i.gyazo.com/2e429a4ab9123c24ed2d4b6fad661509.png"/>
+
+* To later login into the created account - [`POST`] `/auth/login`:
+<img src="https://i.gyazo.com/acae5b282197d20cfbb63d2aabecd988.png"/>
+
+Note: Every request below should have `Authorization` with `Token (Token)` in headers, in my case `Token cca846250770e608d07215ee8876500bb0eb423cb84e225829124cfc9fdba965`.
+
+* To get logged in account information - [`GET`] `/auth/user`.
+
+* To logout an user - [`POST`] `/auth/login`.
+
+# Meeting Rooms
+
+* To get all existing meeting rooms at the moment - [`GET`] `/rooms/`. As you can see the server returns room status, room number and unique ID.<br/><img src="https://i.gyazo.com/f8a56954d37e7c7486cc9ce91d9d45ab.png" alt="logo"/>
+
+* To create a room - [`POST`] `/rooms/`, the request body takes `room_number`.
+
+* To detele a room - [`DELETE`] `/rooms/room_id/`, the request body takes `room_number`. Everyone could delete the room, but the room can be only deleted if there are no active reservations going-on at the moment.
+
+# Reservations
+
+* To get all existing reservations - [`GET`] `/reservations/`. You can also filter them by an employee - [`GET`] `/reservations/?employee_id={employee_id}`.</br><img src="https://i.gyazo.com/466d217b313904dd5523251f8ad40e74.png" alt="reservations"/>
+
+* To create a reservation in a specific room - [`POST`] `/reservations/`. The request takes [`room_id`, `title`, `date_from`, `date_to`] as a body. Everyone can book reservations, but the meeting room must be available at the time the reservation is specified.<br/><img src="https://i.gyazo.com/a78009808c58b45723084a667ee4a4a5.png" alt="reservations"/>
+
+* To cancel a the reservation, you must be the organizator - - [`POST`] `/reservations/{meeting_id}/cancel/`.<br><img src="https://i.gyazo.com/3ad94c2f6e8026d167845ab59d4f90f7.png" alt="cancel_reservation"/>
+
+# Invite Employees
+
+* To get all Invites - [`GET`] `/invites/`. The server will then return a list of invites created by reservation organizators.<br/><img src="https://i.gyazo.com/03ff095b111363c3749a9ce5a9fabc64.png" alt="invites"/>
+
+* To accept the invite - [`GET`] `/invites/{invite_id}/accept/`<br/><img src="https://i.gyazo.com/f53847da7ab6700a8eecb82c6cfb8674.png" alt="invite_accept"/>
+
+* And to decline the invite - [`GET`] `/invites/{invite_id}/cancel/`<br/><img src="https://i.gyazo.com/2d348fd15e7a28c07199a4805509fa28.png" alt="invite_decline"/>
+
+Note: The reservation must be active! The invitation status can always be changed.
