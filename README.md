@@ -1,8 +1,6 @@
 # About Meeting Rooms
-Company needs an internal service for its’ employees which helps them to reserve companies
-meeting room for internal or external meetings. Each employee should be able to check each
-room’s availability, book or cancel a reservation through an API.
-This project is built using: Django and Python3, Django Rest Framework, SQL.
+<img src="https://pngimage.net/wp-content/uploads/2018/05/administracion-de-empresas-png-4.png" width="100" alt="logo"/><p>Company needs an internal service for its’ employees which helps them to reserve companies meeting room for internal or external meetings. Each employee should be able to check each room’s availability, book or cancel a reservation through an API.
+This project is built using: Django and Python3, Django Rest Framework, SQL.</p>
 
 # API 
 This API includes:
