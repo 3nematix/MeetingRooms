@@ -96,6 +96,6 @@ Note: Every request below should have `Authorization` with `Token (Token)` in he
 
 * To accept the invite - [`GET`] `/invites/{invite_id}/accept/`<br/><img src="https://i.gyazo.com/f53847da7ab6700a8eecb82c6cfb8674.png" alt="invite_accept"/>
 
-* And to decline the invite - [`GET`] `/invites/{invite_id}/cancel/`<br/><img src="https://i.gyazo.com/2d348fd15e7a28c07199a4805509fa28.png" alt="invite_decline"/>
+* And to decline the invite - [`GET`] `/invites/{invite_id}/decline/`<br/><img src="https://i.gyazo.com/2d348fd15e7a28c07199a4805509fa28.png" alt="invite_decline"/>
 
 Note: The reservation must be active! The invitation status can always be changed.
