@@ -1,5 +1,5 @@
 # <img src="https://pngimage.net/wp-content/uploads/2018/05/administracion-de-empresas-png-4.png" width="50" alt="logo"/> Meeting Rooms
-<p>Company needs an internal service for its’ employees which helps them to reserve companies meeting room for internal or external meetings. Each employee should be able to check each room’s availability, book or cancel a reservation through an API.
+<p>Company needs an internal service for its’ employees which helps them to reserve companies meeting room for internal or external meetings. Each employee should be able to check each room’s availability, book, or cancel a reservation through an API.
 This project is built using: Django and Python3, Django Rest Framework, SQL.</p>
 
 # API 
@@ -18,7 +18,7 @@ This guide will be following installation steps on a Linux Ubuntu 18.04.4 (<a hr
 * We will be Working with Python3, so we need to install the package-management system for it
 <br/>`sudo apt-get install python3-pip`.
 
-* I personally love working with PostgreSQL, so for this tutorial I'm going to use it. You can install PostgreSQL and its library with `sudo apt-get install -y libpq-dev postgresq`.
+* I personally love working with PostgreSQL, so for this tutorial, I'm going to use it. You can install PostgreSQL and its library with `sudo apt-get install -y libpq-dev postgresq`.
 
 <b>2. PostgreSQL Configuration</b>
 
@@ -31,15 +31,15 @@ The default authentication mode for PostgreSQL is set to ident, so we are going 
 
 * Now, I'm going to set postgres user password to 'Testpass1234'<br/>`ALTER USER postgres WITH PASSWORD 'Testpass1234';`. After successfull Query in your terminal, you should see `ALTER ROLE`.
 
-* Don't forget to create a Database, in this case I will create a Database named - `meetingsapi`, `CREATE DATABASE meetingsapi;`.
+* Don't forget to create a Database, in this case, I will create a Database named - `meetingsapi`, `CREATE DATABASE meetingsapi;`.
 
-* So far we got everything up and running, now we need to change `HBA` and `CONFIG` files, to get their location we simply send few queries `SHOW HBA_FILE;` and `SHOW CONFIG_FILE;`, you can exit with `ctrl + d`. 
+* So far we got everything up and running, now we need to change `HBA` and `CONFIG` files, to get their location we simply send a few queries `SHOW HBA_FILE;` and `SHOW CONFIG_FILE;`, you can exit with `ctrl + d`. 
 
-* I'm going to use a simple line text editor for Unix and Linux `sudo nano /etc/postgresql/10/main/pg_hba.conf`, scroll to the bottom and add a line `host all all 0.0.0.0/00 md5`, this will let PostgreSQL to accept the connections not only from localhost.
+* I'm going to use a simple line text editor for Unix and Linux `sudo nano /etc/postgresql/10/main/pg_hba.conf`, scroll to the bottom and add a line `host all all 0.0.0.0/00 md5`, this will let PostgreSQL accept the connections not only from localhost.
 
 * Also we need to specify the TCP/IP address(es) on which the server will listen for connections from client applications, we can do that by typing `sudo nano /etc/postgresql/10/main/postgresql.conf` and then adding `listen_addresses = '*'` to the bottom line.
 
-* After all these changes made, we need to restart the PostgreSQL server with `sudo service postgresql restart`.
+* After all these changes are made, we need to restart the PostgreSQL server with `sudo service postgresql restart`.
 
 <b>3. Setting up the project</b>
 
@@ -78,7 +78,7 @@ Note: Every request below should have `Authorization` with `Token (Token)` in he
 
 * To create a room - [`POST`] `/rooms/`, the request body takes `room_number`.
 
-* To detele a room - [`DELETE`] `/rooms/room_id/`, the request body takes `room_number`. Everyone could delete the room, but the room can be only deleted if there are no active reservations going-on at the moment.
+* To delete a room - [`DELETE`] `/rooms/room_id/`, the request body takes `room_number`. Everyone could delete the room, but the room can be only deleted if there are no active reservations going-on at the moment.
 
 # Reservations
 
