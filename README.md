@@ -86,7 +86,7 @@ Note: Every request below should have `Authorization` with `Token (Token)` in he
 
 * To create a reservation in a specific room - [`POST`] `/reservations/`. The request takes [`room_id`, `title`, `date_from`, `date_to`] as a body. Everyone can book reservations, but the meeting room must be available at the time the reservation is specified.<br/><img src="https://i.gyazo.com/a78009808c58b45723084a667ee4a4a5.png" alt="reservations"/>
 
-* To cancel a the reservation, you must be the organizator - - [`POST`] `/reservations/{meeting_id}/cancel/`.<br><img src="https://i.gyazo.com/3ad94c2f6e8026d167845ab59d4f90f7.png" alt="cancel_reservation"/>
+* To cancel the reservation, you must be the organizator - [`POST`] `/reservations/{meeting_id}/cancel/`.<br><img src="https://i.gyazo.com/3ad94c2f6e8026d167845ab59d4f90f7.png" alt="cancel_reservation"/>
 
 # Invite Employees
 
