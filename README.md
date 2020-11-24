@@ -68,13 +68,13 @@ Note: Every request should have `Content-Type` set to `application/json` in requ
 
 Note: Every request below should have `Authorization` with `Token (Token)` in headers, in my case `Token cca846250770e608d07215ee8876500bb0eb423cb84e225829124cfc9fdba965`.
 
-* To get logged in account information - [`GET`] `/auth/user`.
+* To get logged in account data - [`GET`] `/auth/user`.
 
 * To logout an user - [`POST`] `/auth/login`.
 
 # Meeting Rooms
 
-* To get all existing meeting rooms at the moment - [`GET`] `/rooms/`. As you can see the server returns room status, room number and unique ID.<br/><img src="https://i.gyazo.com/f8a56954d37e7c7486cc9ce91d9d45ab.png" alt="logo"/>
+* To get all the existing meeting rooms at the moment - [`GET`] `/rooms/`. As you can see the server returns room status, room number and unique ID.<br/><img src="https://i.gyazo.com/f8a56954d37e7c7486cc9ce91d9d45ab.png" alt="logo"/>
 
 * To create a room - [`POST`] `/rooms/`, the request body takes `room_number`.
 
@@ -82,7 +82,7 @@ Note: Every request below should have `Authorization` with `Token (Token)` in he
 
 # Reservations
 
-* To get all existing reservations - [`GET`] `/reservations/`. You can also filter them by an employee - [`GET`] `/reservations/?employee_id={employee_id}`.</br><img src="https://i.gyazo.com/466d217b313904dd5523251f8ad40e74.png" alt="reservations"/>
+* To get all the existing reservations - [`GET`] `/reservations/`. You can also filter them by an employee - [`GET`] `/reservations/?employee_id={employee_id}`.</br><img src="https://i.gyazo.com/466d217b313904dd5523251f8ad40e74.png" alt="reservations"/>
 
 * To create a reservation in a specific room - [`POST`] `/reservations/`. The request takes [`room_id`, `title`, `date_from`, `date_to`] as a body. Everyone can book reservations, but the meeting room must be available at the time the reservation is specified.<br/><img src="https://i.gyazo.com/a78009808c58b45723084a667ee4a4a5.png" alt="reservations"/>
 
@@ -90,7 +90,7 @@ Note: Every request below should have `Authorization` with `Token (Token)` in he
 
 # Invite Employees
 
-* To get all Invites - [`GET`] `/invites/`. The server will then return a list of invites created by reservation organizators.<br/><img src="https://i.gyazo.com/03ff095b111363c3749a9ce5a9fabc64.png" alt="invites"/>
+* To get all the invites - [`GET`] `/invites/`. The server will then return a list of invites created by reservation organizators.<br/><img src="https://i.gyazo.com/03ff095b111363c3749a9ce5a9fabc64.png" alt="invites"/>
 
 * To accept the invite - [`GET`] `/invites/{invite_id}/accept/`<br/><img src="https://i.gyazo.com/f53847da7ab6700a8eecb82c6cfb8674.png" alt="invite_accept"/>
 
