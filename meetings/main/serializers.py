@@ -151,7 +151,7 @@ class AcceptInvitationSerializer(serializers.Serializer):
 
         # Check if the reservation isn't canceled
         if invite.reservation.status is 0:
-            if user != invite.employee:
+            if user == invite.employee:
                 invite.status = 1
                 invite.save()
                 return ReservationInvite(invite)
@@ -169,7 +169,7 @@ class DeclineInvitationSerializer(serializers.Serializer):
         invite = self.context.get("invite")
 
         if invite.reservation.status is 0:
-            if user != invite.employee:
+            if user == invite.employee:
                 invite.status = 0
                 invite.save()
                 return ReservationInvite(invite)
