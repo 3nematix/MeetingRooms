@@ -2,7 +2,6 @@ from datetime import datetime
 from dateutil.parser import parse
 from django.utils import timezone
 from rest_framework import serializers
-from rest_framework.renderers import JSONRenderer
 from main.models import MeetingRoom, Reservation, ReservationInvite
 from accounts.models import Employees
 from accounts.serializers import EmployeeSerializer
