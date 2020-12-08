@@ -87,7 +87,7 @@ class Employees(AbstractBaseUser, PermissionsMixin):
     )
 
     updated_at = models.DateTimeField(
-        auto_add=True
+        auto_now=True
     )
 
     objects = EmployeeManager()
