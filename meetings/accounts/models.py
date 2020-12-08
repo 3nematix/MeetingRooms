@@ -44,27 +44,51 @@ class EmployeeManager(BaseUserManager):
 
 
 class Employees(AbstractBaseUser, PermissionsMixin):
-    public_id = models.UUIDField(
-        default=uuid.uuid4, 
-        editable=False, 
+        public_id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
         unique=True,
     )
 
-    is_superuser = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(
+        default=False
+    )
+
+    is_staff = models.BooleanField(
+        default=False
+    )
+
+    is_active = models.BooleanField(
+        default=True
+    )
 
     first_name = models.CharField(
-        max_length=30, blank=False, null=False, validators=[validate_name])
+        max_length=30,
+        validators=[validate_name]
+    )
+
     last_name = models.CharField(
-        max_length=30, blank=False, null=False, validators=[validate_name])
+        max_length=30, 
+        validators=[validate_name]
+    )
 
     email_address = models.EmailField(
-        max_length=320, unique=True, null=False, blank=False)
+        max_length=320, 
+        unique=True, 
+    )
 
     password = models.CharField(
-        max_length=128, null=False, blank=False, validators=[validate_password])
-    date_registered = models.DateTimeField(auto_now_add=True)
+        max_length=128, 
+        validators=[validate_password]
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_add=True
+    )
 
     objects = EmployeeManager()
 
