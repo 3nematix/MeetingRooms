@@ -45,7 +45,10 @@ class EmployeeManager(BaseUserManager):
 
 class Employees(AbstractBaseUser, PermissionsMixin):
     public_id = models.UUIDField(
-        default=uuid.uuid4, editable=False, unique=True, blank=False, null=False, max_length=36)
+        default=uuid.uuid4, 
+        editable=False, 
+        unique=True,
+    )
 
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
