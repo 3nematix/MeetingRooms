@@ -44,7 +44,7 @@ class EmployeeManager(BaseUserManager):
 
 
 class Employees(AbstractBaseUser, PermissionsMixin):
-        public_id = models.UUIDField(
+    public_id = models.UUIDField(
         default=uuid.uuid4,
         editable=False,
         unique=True,
